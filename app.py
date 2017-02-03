@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, url_for, request, redirect
 from tinydb import TinyDB, Query
 
@@ -17,4 +18,4 @@ def save_number():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host="0.0.0.0", debug=True, port=int(os.getenv("PORT")))
