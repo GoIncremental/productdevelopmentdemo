@@ -18,8 +18,12 @@ class PremiumAirNotifierAppTests(TestCase):
 
 
     def test_when_number_added_its_displayed_on_the_page(self):
-        new_pax_data = {'number': '0011223344556'}
+        new_pax_data = {'number': '00447477999880'}
         response = self.client.post('/save_number', data=new_pax_data)
+        self.assert_redirects(response, url_for('index'))
+
+    def test_when_sms_sent_an_sms_gets_sent(self):
+        response = self.client.get('/send_sms')
         self.assert_redirects(response, url_for('index'))
         
 

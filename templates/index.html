@@ -17,7 +17,11 @@
                     <li>{{ passenger['number'] }}</li>
                 {% endfor %}
             </ul>
-            
+        </div>
+        <div>
+            <form action="{{ url_for('send_sms') }}" action="GET">
+                <input type="submit" value="Send Alerts">
+            </form>
         </div>
     </body>
 </html>
