@@ -21,9 +21,9 @@ class PremiumAirNotifierAppTests(TestCase):
         response = self.client.post('/save_number', data=new_pax_data)
         self.assert_redirects(response, url_for('index'))
 
-    # def test_when_sms_sent_an_sms_gets_sent(self):
-    #     response = self.client.get('/send_sms')
-    #     self.assert_redirects(response, url_for('index'))
+    def test_when_sms_sent_an_sms_gets_sent(self):
+        response = self.client.get('/send_sms')
+        self.assert_redirects(response, url_for('index'))
         
 
 if __name__ == '__main__':
