@@ -17,7 +17,7 @@ db = TinyDB(storage=MemoryStorage)
 def index():
     """ Index Route """
     passenger_data = db.all()
-    return render_template('index.1.html', passenger_data=passenger_data)
+    return render_template('index.2.html', passenger_data=passenger_data)
 
 
 @app.route("/save_number", methods=['POST'])
