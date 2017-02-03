@@ -2,7 +2,7 @@
 machine:
   python:
     version:
-      2.7.13
+      2.7.12
   
   # Add some environment variables
   environment:
