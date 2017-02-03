@@ -1,10 +1,11 @@
 import os
 from flask import Flask, render_template, url_for, request, redirect
 from tinydb import TinyDB, Query
+from tinydb.storages import MemoryStorage
 
 app = Flask(__name__)
 
-db = TinyDB('passengers.json')
+db = TinyDB(storage=MemoryStorage)
 
 @app.route("/")
 def index():
