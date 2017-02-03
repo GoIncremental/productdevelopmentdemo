@@ -1,9 +1,5 @@
 ## Customize the test machine
 machine:
-  # timezone:
-  #   Europe/London
-
-  # Version of ruby to use
   python:
     version:
       2.7.13
