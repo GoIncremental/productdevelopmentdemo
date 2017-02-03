@@ -4,29 +4,34 @@ from tinydb import TinyDB, Query
 from tinydb.storages import MemoryStorage
 from twilio.rest import TwilioRestClient
 
-
+# TODO: Factor out into config
 account_sid = os.getenv('TWILIO_SID')
 auth_token = os.getenv('TWILIO_AUTH_TOKEN')
 sms_number = '447400029698'
 client = TwilioRestClient(account_sid, auth_token)
-
 app = Flask(__name__)
-
 db = TinyDB(storage=MemoryStorage)
+
 
 @app.route("/")
 def index():
+    """ Index Route """
     passenger_data = db.all()
-    return render_template('index.html', passenger_data=passenger_data)
+    return render_template('index.1.html', passenger_data=passenger_data)
+
 
 @app.route("/save_number", methods=['POST'])
 def save_number():
+    """ Save Number & Pax Details """
     db.insert({'number': request.form.get('number'), 
                'first_name': request.form.get('first_name')})
     return redirect(url_for('index'))
 
+
 @app.route("/send_sms", methods=['GET'])
 def send_sms():
+    """ Send SMS """
+    # TODO: Factor out into utility class
     passenger_data = db.all()
     for passenger in passenger_data:
         message = client.messages.create(to=passenger.get('number'), 

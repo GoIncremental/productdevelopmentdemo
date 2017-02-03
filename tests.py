@@ -14,14 +14,12 @@ class PremiumAirNotifierAppTests(TestCase):
         self.assert200(response)
         self.assertTrue("All numbers" in response.data)
         self.assertTrue("Add Number" in response.data)
-        
-        
-        # self.assertTrue("First Name" in response.data)
-        # self.assertTrue("Mobile Number" in response.data)
+        self.assertTrue("First Name" in response.data)
+        self.assertTrue("Mobile Number" in response.data)
 
 
     def test_when_number_added_its_displayed_on_the_page(self):
-        new_pax_data = {'number': '00447477999880'}
+        new_pax_data = {'number': '0079055045460'}
         response = self.client.post('/save_number', data=new_pax_data)
         self.assert_redirects(response, url_for('index'))
 
