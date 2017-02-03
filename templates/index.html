@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Premium Air Customer Gate Notifier</title>
+    </head>
+    <body>
+        <div>
+            <h3>Add Number</h3>
+            <form action="{{ url_for('save_number')}}" method="POST">
+                <input type="text" value="" name="number">
+                <input type="submit">
+            </form>
+        </div>
+        <div>
+            <h3>All numbers</h3>
+            <ul>
+                {% for passenger in passenger_data %}
+                    <li>{{ passenger['number'] }}</li>
+                {% endfor %}
+            </ul>
+            
+        </div>
+    </body>
+</html>
