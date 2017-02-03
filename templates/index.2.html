@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <title>Premium Air Customer Gate Notifier</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <style>
+            body {
+                padding-top: 50px;
+                }
+            .starter-template {
+                padding: 40px 15px;
+                text-align: center;
+                }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Premium Air Passenger Notification Platform</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                <!--<ul class="nav navbar-nav">
+                    <li class="active"><a href="#"></a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>-->
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div class="container">
+            <div class="well">
+                <h3>Add Number</h3>
+                <form action="{{ url_for('save_number')}}" method="POST">
+                        <div class="form-group form-group-lg">
+                        <label for="number">Mobile Number</label>
+                        <input type="text" class="form-control" value="" id="number" name="number">
+                        <p class="help-block">Put your full international number here - e.g. 007xxxxxxxxxxx.</p>
+                        </div>
+                        <div class="form-group form-group-lg">  
+                        <label for="first_name">First Name</label>
+                        <input type="text" class="form-control" value="" id="first_name" name="first_name">
+                            <p class="help-block">Put your first name here - or whatever you like to be called.</p>
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-success">Add Customer Data</button>
+                </form>
+            </div>
+            <div>
+                <h3>All numbers</h3>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <th>First Name</th>
+                        <th>Mobile Number</th>
+                    </thead>
+                    <tbody>
+                    {% for passenger in passenger_data %}
+                        <tr>
+                            <td>{{ passenger['first_name'] }}</td>
+                            <td>{{ passenger['number'] }}</td>
+                        <tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <hr style="border-top: dotted 1px;" />
+            <div>
+                <form action="{{ url_for('send_sms') }}" action="GET">
+                     <div class="form-group form-group-lg">
+                        <input type="submit" value="Send Gate Alerts" class="btn btn-lg btn-danger">
+                        <p class="help-block">This will send an alert to all passengers !!!</p>
+                     </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

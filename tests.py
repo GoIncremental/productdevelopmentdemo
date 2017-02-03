@@ -14,8 +14,10 @@ class PremiumAirNotifierAppTests(TestCase):
         self.assert200(response)
         self.assertTrue("All numbers" in response.data)
         self.assertTrue("Add Number" in response.data)
-        self.assertTrue("First Name" in response.data)
-        self.assertTrue("Mobile Number" in response.data)
+        
+        
+        # self.assertTrue("First Name" in response.data)
+        # self.assertTrue("Mobile Number" in response.data)
 
 
     def test_when_number_added_its_displayed_on_the_page(self):

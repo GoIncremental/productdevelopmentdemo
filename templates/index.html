@@ -8,8 +8,6 @@
             <form action="{{ url_for('save_number')}}" method="POST">
                 <label for="number">Mobile Number</label>
                 <input type="text" value="" id="number" name="number">
-                <label for="first_name">First Name</label>
-                <input type="text" value="" id="first_name" name="first_name">
                 <input type="submit">
             </form>
         </div>
@@ -17,15 +15,15 @@
             <h3>All numbers</h3>
             <ul>
                 {% for passenger in passenger_data %}
-                    <li>{{ passenger['first_name'] }}: {{ passenger['number'] }}</li>
+                    <li>{{ passenger['number'] }}</li>
                 {% endfor %}
             </ul>
         </div>
         <hr/>
-        <div>
+        <!--<div>
             <form action="{{ url_for('send_sms') }}" action="GET">
                 <input type="submit" value="Send Alerts">
             </form>
-        </div>
+        </div>-->
     </body>
 </html>
