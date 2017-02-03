@@ -1,0 +1,26 @@
+## Customize the test machine
+machine:
+  # timezone:
+  #   Europe/London
+
+  # Version of ruby to use
+  python:
+    version:
+      2.7.13
+  
+  # Add some environment variables
+  environment:
+    CIRCLE_ENV: test
+
+## Customize test commands
+test:
+  override:
+    - mkdir -p $CIRCLE_TEST_REPORTS
+    - python tests.py
+  
+## Customize deployment commands
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: aqueous-journey-48420
