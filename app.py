@@ -21,7 +21,8 @@ def index():
 
 @app.route("/save_number", methods=['POST'])
 def save_number():
-    db.insert({'number': request.form.get('number')})
+    db.insert({'number': request.form.get('number'), 
+               'first_name': request.form.get('first_name')})
     return redirect(url_for('index'))
 
 @app.route("/send_sms", methods=['GET'])
@@ -30,7 +31,7 @@ def send_sms():
     for passenger in passenger_data:
         message = client.messages.create(to=passenger.get('number'), 
                                          from_=sms_number,
-                                         body="Gate now closing for BA0057.")
+                                         body="{} - Hurry !! Gate now closing for BA0057.".format(passenger.get('first_name')))
     return redirect(url_for('index'))
 
 if __name__ == "__main__":
